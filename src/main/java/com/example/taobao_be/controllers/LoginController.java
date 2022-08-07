@@ -61,7 +61,7 @@ public class LoginController {
 
 @Data
 class LoginRequest {
-    @NotBlank
+    @NotBlank //dsf
     private String email;
     @NotBlank
     private String password;
