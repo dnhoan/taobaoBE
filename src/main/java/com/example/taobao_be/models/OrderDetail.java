@@ -1,5 +1,6 @@
 package com.example.taobao_be.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.Hibernate;
@@ -15,7 +16,7 @@ public class OrderDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Integer id;
+    private Long id;
 
     @Column(name = "amount", nullable = false)
     private Integer amount;
@@ -23,6 +24,7 @@ public class OrderDetail {
     @Column(name = "price", nullable = false)
     private Double price;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "order_id", nullable = false)
     private Order order;
@@ -30,4 +32,15 @@ public class OrderDetail {
     @OneToOne
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
+
+    @Override
+    public String toString() {
+        return "OrderDetail{" +
+                "id=" + id +
+                ", amount=" + amount +
+                ", price=" + price +
+                ", order=" + order +
+                ", product=" + product +
+                '}';
+    }
 }
